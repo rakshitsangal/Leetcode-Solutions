@@ -1,0 +1,34 @@
+# Write a class that keeps a track of the number of employees in an organisation and store
+# their NAME, DESIGNATION, and SALARY details.
+# a) Write a method called GETDATA to take input(name,designation,salary) from user
+# b) Write a method called AVERAGE to find AVERAGE Salary of all the employees of the Organisation
+# c) Write a method called DISPLAY to print all the information of the employee.
+
+class Employee:
+    c,s=0,0
+    avg=0
+    def __init__(self):
+        pass
+    
+    def getdata(self):
+        global name,desig,sal
+        name = input("Enter the Name of the Employee:")
+        desig=input("Enter the Designation of the Employee:")
+        sal=float(input("Enter the Salary of the Employee:"))
+        Employee.c+=1
+
+    def Average(self):
+        Employee.s+=sal
+        Employee.avg=(Employee.s/Employee.c)
+
+    def Display(self):
+        print("\n Name={} , Designation={} , Salary={} \n ".format(name,desig,sal))
+        
+
+n=int(input("Enter the number of Employees:"))
+for i in range(n):
+    obj=Employee()
+    obj.getdata()
+    obj.Average()
+    obj.Display()
+print("Average Salary=",Employee.avg)
