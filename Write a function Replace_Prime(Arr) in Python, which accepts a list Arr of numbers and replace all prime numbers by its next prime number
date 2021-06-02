@@ -1,0 +1,37 @@
+# Write a function Replace_Prime(Arr) in Python, which accepts a list Arr of numbers
+# and rerplace all prime numbers by its next prime number
+# ex- [10,23,31,40,12,11]
+# output - [10,29,37,40,12,13]
+
+class Prime:
+    l1=[]
+    def __init__(self,l):
+        self.l=l
+
+    def Replace_Prime(self):
+        length=len(self.l)
+        for i in range(length):
+            c=0
+            for j in range(2,self.l[i]//2+1):
+                if self.l[i]%j==0:
+                    c=1
+                    break
+            if c==1:
+                Prime.l1.append(self.l[i])
+            else:
+                j=self.l[i]+1
+                while j>i:
+                    flag=0
+                    for k in range(2,j//2+1):
+                        if j%k==0:
+                            flag=1
+                            break
+                    if flag==0:
+                        Prime.l1.append(j)
+                        break
+                    j+=1
+
+l=[10,23,31,40,12,11]
+obj=Prime(l)
+obj.Replace_Prime()
+print(Prime.l1)
