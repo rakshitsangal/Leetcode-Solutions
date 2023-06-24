@@ -1,0 +1,84 @@
+import tkinter as tk
+from functools import partial
+root=tk.Tk()
+root.title("Rakshit's Calculator")
+l=tk.Label(root,text="Welcome to Rakshit's Calculator Program",font='Modern 28 bold').place(x=50,y=10)
+root.geometry("700x500")
+
+def calsum(la3,num1,num2):
+    n1=int(num1.get())
+    n2=int(num2.get())
+    n3=n1+n2
+    la3.config(fg="yellow",bg="green",height=5,width=30,text="Result=%d"%n3)
+
+def subtract(la3,num1,num2):
+    n1=int(num1.get())
+    n2=int(num2.get())
+    n3=n1-n2
+    la3.config(fg="yellow",bg="green",height=5,width=30,text="Result=%d"%n3)
+
+def multiply(la3,num1,num2):
+    n1=int(num1.get())
+    n2=int(num2.get())
+    n3=n1*n2
+    la3.config(fg="yellow",bg="green",height=5,width=30,text="Result=%d"%n3)
+    
+def division(la3,num1,num2):
+    n1=int(num1.get())
+    n2=int(num2.get())
+    n3=n1/n2
+    la3.config(fg="yellow",bg="green",height=5,width=30,text="Result=%d"%n3)
+
+def remainder(la3,num1,num2):
+    n1=int(num1.get())
+    n2=int(num2.get())
+    n3=n1%n2
+    la3.config(fg="yellow",bg="green",height=5,width=30,text="Result=%d"%n3)
+
+def exponent(la3,num1,num2):
+    n1=int(num1.get())
+    n2=int(num2.get())
+    n3=n1**n2
+    la3.config(fg="yellow",bg="green",height=5,width=30,text="Result=%d"%n3)
+
+
+def average(la3,num1,num2):
+    n1=int(num1.get())
+    n2=int(num2.get())
+    n3=(n1+n2)/2
+    la3.config(fg="yellow",bg="green",height=5,width=30,text="Result=%d"%n3)
+
+
+
+#labels
+l1=tk.Label(root,text="Enter Ist Number",font='18').place(x=25,y=80)
+l2= tk.Label(root,text="Enter IInd Number",font='18').place(x=25,y=160)
+number1=tk.StringVar() # Hold the value of textfield in the form of String, by default it contain " "
+"200"
+number2=tk.StringVar()
+"300"
+labelfinal=tk.Label(root)
+labelfinal.place(x=250,y=200)
+
+#textfield
+t1=tk.Entry(root,textvariable=number1).place(x=200,y=80)
+t2=tk.Entry(root,textvariable=number2).place(x=200,y=160)
+
+calsum=partial(calsum,labelfinal,number1,number2)
+subtract=partial(subtract,labelfinal,number1,number2)
+multiply=partial(multiply,labelfinal,number1,number2)
+division=partial(division,labelfinal,number1,number2)
+remainder=partial(remainder,labelfinal,number1,number2)
+exponent=partial(exponent,labelfinal,number1,number2)
+average=partial(average,labelfinal,number1,number2)
+
+b1=tk.Button(root,text="Addition",font='4',command=calsum).place(x=150,y=300)
+b2=tk.Button(root,text="Clear",font='4',command=root.destroy).place(x=250,y=300)
+b3=tk.Button(root,text="Subtraction",font='4',command=subtract).place(x=330,y=300)
+b4=tk.Button(root,text="Multiply",font='4',command=multiply).place(x=460,y=300)
+b5=tk.Button(root,text="Division",font='4',command=division).place(x=560,y=300)
+b5=tk.Button(root,text="Remainder",font='4',command=remainder).place(x=150,y=350)
+b6=tk.Button(root,text="Exponent",font='4',command=exponent).place(x=280,y=350)
+b7=tk.Button(root,text="Average",font='4',command=average).place(x=390,y=350)
+
+root.mainloop()
